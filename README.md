@@ -28,7 +28,7 @@ sedikit ?
 * {arr[$13]+=$21} = Menambahkan profit pada setiap region yang sama 
 *  for (hasil in arr) = kemudian mengecek region yang memiliki profit terkecil dan masuk pada hasil
 * {print hasil} = Mengeprint hasil
-* }' Sample-Superstore.tsv = Membaca fike .tsv
+* }' Sample-Superstore.tsv = Membaca file .tsv
 *  | sort -g| = Mengurutkan terkecil ke terbesar
 *  head -1 = Mengambil baris pertama paling atas
 
