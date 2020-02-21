@@ -60,7 +60,8 @@ sedikit ?
     for(hasil in arr) {print arr[hasil]" "hasil}
     }' Sample-Superstore.tsv | sort -g | head -10
  
-*  if ($11 == "Texas" || $11 == "Illinois") arr[$17]+=$21 =
-*  for(hasil in arr) {print arr[hasil]" "hasil} =
+*  if ($11 == "Texas" || $11 == "Illinois") arr[$17]+=$21 = Jika Texas dan Illionis maka nilai dari kolom profit ditambahkan ke         array
+*  for(hasil in arr) = Perulangan yang terjadi selama array masih ada produk
+* {print arr[hasil]" "hasil} = Mengeprint hasil
 *  | sort -g | = Mengurutkan terkecil ke terbesar
 *  head -10 = Mengambil sepuluh baris paling atas
