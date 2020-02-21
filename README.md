@@ -53,14 +53,14 @@ sedikit ?
       sedikit berdasarkan 2 negara bagian (state) hasil poin b
       
     echo "C. 10 Produk yang memiliki Profit paling sedikit berdasarkan 2 negara: "
-    awk -F '        '  '{
-    if ($13 == 'Central' && $11 == "Texas" || $11 == "Illinois") arr[$17]+=$21
+    awk -F '        '  '$13 ~/Central/{
+    if ($11 == "Texas" || $11 == "Illinois") arr[$17]+=$21
     }
     END {
     for(hasil in arr) {print arr[hasil]" "hasil}
     }' Sample-Superstore.tsv | sort -g | head -10
-    
-*  {if ($13 == 'Central' && $11 == "Texas" || $11 == "Illinois") arr[$17]+=$21} = 
+ 
+*  if ($11 == "Texas" || $11 == "Illinois") arr[$17]+=$21 =
 *  for(hasil in arr) {print arr[hasil]" "hasil} =
 *  | sort -g | = Mengurutkan terkecil ke terbesar
 *  head -10 = Mengambil sepuluh baris paling atas
