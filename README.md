@@ -24,3 +24,13 @@ sedikit ?
     END {
         for (hasil in arr) {print hasil}
     }' Sample-Superstore.tsv | sort -n | head -1
+    
+* {arr[$13]+=$21} = Menambahkan profit pada setiap region yang sama 
+*  for (hasil in arr) = kemudian mengecek region yang memiliki profit terkecil dan masuk pada hasil
+* {print hasil} = Mengeprint hasil
+* }' Sample-Superstore.tsv = Mengambil 
+*  | sort -g| = Mengurutkan terkecil ke terbesar
+*  head -1 = Mengambil baris pertama paling atas
+
+>  B. Tampilkan 2 negara bagian (state) yang memiliki keuntungan (profit) paling
+      sedikit berdasarkan hasil poin a
