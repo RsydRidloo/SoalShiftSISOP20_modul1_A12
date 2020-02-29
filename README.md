@@ -22,7 +22,7 @@ sedikit ?
     echo "A. Region dengan Profit Sedikit:" region=$(awk -F '\t'  '{arr[$13]+=$21} END { for (hasil in arr) {print hasil} }' Sample-Superstore.tsv | sort -g | head -1) echo "$region"
     
 * {arr[$13]+=$21} = Menambahkan profit pada setiap region yang sama 
-*  for (hasil in arr) = kemudian mengecek region yang memiliki profit terkecil dan masuk pada hasil
+*  for (hasil in arr) = Memasukkan arr kedalam hasil
 * {print hasil} = Mengeprint hasil
 * }' Sample-Superstore.tsv = Membaca file .tsv
 *  | sort -g| = Mengurutkan terkecil ke terbesar
