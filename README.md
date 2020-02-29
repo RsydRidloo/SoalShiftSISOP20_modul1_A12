@@ -32,10 +32,9 @@ sedikit ?
       sedikit berdasarkan hasil poin a
       
       echo " " echo "B. 2 Negara dengan Profit Sedikit:" state=$(awk -F '\t' -v a=$region '{if($13==a)arr[$11]+=$21} END { for(hasil in arr) {print arr[hasil]"  "hasil} }' Sample-Superstore.tsv | sort -g | head -2) echo "$state"
-    
-*  $13 ~/Central/ = Karena diketahui hasil point a adalah central 
-* {arr[$11]+=$21} = Menambahkan profit pada setiap state yang sama  
-*  for(hasil in arr) = kemudian mengecek state yang memiliki profit terkecil dan masuk pada hasil
+     
+* -v a=$region '{if($13==a){arr[$11]+=$21} = Jika yang diketahui Central, maka menambahkan profit pada setiap state yang sama  
+*  for(hasil in arr) = Memasukkan arr kedalam hasil
 *  {print arr[hasil]"  "hasil} = Mengeprint hasil
 *  }' Sample-Superstore.tsv = Membaca file .tsv
 *  | sort -g | = Mengurutkan terkecil ke terbesar
@@ -47,7 +46,7 @@ sedikit ?
     echo " " echo "C. 10 Produk yang memiliki Profit paling sedikit berdasarkan 2 negara: " awk -F '\t' -v a=$region '{if($11 == "Texas" || $11 == "Illinois")arr[$17]+=$21 } END { for(hasil in arr) {print arr[hasil]" "hasil} }' Sample-Superstore.tsv | sort -g | head -10
  
 *  if ($11 == "Texas" || $11 == "Illinois") arr[$17]+=$21 = Menambahkan profit pada setiap produk sama yang terdapat pada state "Texas" dan "Illinois"   
-*  for(hasil in arr) 
+*  for(hasil in arr) = Memasukkan arr kedalam hasil
 * {print arr[hasil]" "hasil} = Mengeprint hasil
 *  | sort -g | = Mengurutkan terkecil ke terbesar
 *  head -10 = Mengambil sepuluh baris paling atas
@@ -66,7 +65,8 @@ sedikit ?
    (B) Password acak tersebut disimpan pada file berekstensi .txt dengan nama berdasarkan argumen yang diinputkan dan HANYA                                berupa alphabet.
    
       #!/bin/bash
-
+      
+      touch waktu.txt
       for var in $@;do
 
       if [[ $var =~ ^[a-zA-Z]+$ ]];
