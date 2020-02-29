@@ -145,7 +145,7 @@ dengan isi list.txt :
 
 * 5 menunjukkan bahwa file akan dieksekusi setiap menit ke 5
 * 6-23/8 menunjukkan bahwa file akan dieksekusi mulai jam 6 setiap hari setiap 8 jam sekali
-*  * * menunjukkan bahwa file akan dieksekusi tanpa ada syarat tanggal apa dan bulan apa, jadi dijalankan mengikuti perintah yang lain
+* ** menunjukkan bahwa file akan dieksekusi tanpa ada syarat tanggal apa dan bulan apa, jadi dijalankan mengikuti perintah yang lain
 * 0-5 menunjukkan bahwa file akan dieksekusi mulai hari minggu-jumat
 * /home/Downloads/SoalShiftSISOP20_modul1_A12-master/soal3/soal3.sh menunjukkan directory file
 
