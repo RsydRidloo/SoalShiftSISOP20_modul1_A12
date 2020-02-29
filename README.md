@@ -106,6 +106,7 @@ sedikit ?
    
 
 3. Pada soal ini kita diminta untuk :
+
    (A) membuat script untuk mendownload 28 gambar dari "https://loremflickr.com/320/240/cat" menggunakan command wget dan menyimpan file dengan nama "pdkt_kusuma_NO" kemudian menyimpan log message wget kedalam sebuah file "wget.log"
    
    (B) membuat penjadwalan untuk menjalankan script download tersebut, dimana script download tersebut hanya berjalan setiap 8 jam dimulai dari jam 6.05 setiap hari kecuali hari sabtu. 
@@ -137,6 +138,4 @@ dengan isi list.txt :
 * -O "pdkt_kusuma_${count}.jpg" merupakan perintah yang digunakan untuk menamai file yang di download
 * $p digunakan untuk mengakses file list.txt yang berisi link download dan perintah wget untuk mendownload file
 * -a wget.log digunakan untuk menyimpan log messages wget ke dalam sebuah file yang bernama wget.log
- 
-
  
