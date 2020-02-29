@@ -138,4 +138,15 @@ dengan isi list.txt :
 * -O "pdkt_kusuma_${count}.jpg" merupakan perintah yang digunakan untuk menamai file yang di download
 * $p digunakan untuk mengakses file list.txt yang berisi link download dan perintah wget untuk mendownload file
 * -a wget.log digunakan untuk menyimpan log messages wget ke dalam sebuah file yang bernama wget.log
+
+> (B) membuat penjadwalan untuk menjalankan script download tersebut, dimana script download tersebut hanya berjalan setiap 8 jam dimulai dari jam 6.05 setiap hari kecuali hari sabtu. 
+
+      5 6-23/8 * * 0-5 /home/Downloads/SoalShiftSISOP20_modul1_A12-master/soal3/soal3.sh
+
+* 5 menunjukkan bahwa file akan dieksekusi setiap menit ke 5
+* 6-23/8 menunjukkan bahwa file akan dieksekusi mulai jam 6 setiap hari setiap 8 jam sekali
+* * menunjukkan bahwa file akan dieksekusi tanpa ada syarat tanggal apa dan bulan apa, jadi dijalankan mengikuti perintah yang lain
+* 0-5 menunjukkan bahwa file akan dieksekusi mulai hari minggu-jumat
+* /home/Downloads/SoalShiftSISOP20_modul1_A12-master/soal3/soal3.sh menunjukkan directory file
+
  
