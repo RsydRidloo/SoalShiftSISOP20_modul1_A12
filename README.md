@@ -72,6 +72,10 @@ sedikit ?
    
    (B) Password acak tersebut disimpan pada file berekstensi .txt dengan nama berdasarkan argumen yang diinputkan dan HANYA                                berupa alphabet.
    
+   (C) Kemudian supaya file .txt tersebut tidak mudah diketahui maka nama filenya akan di enkripsi dengan menggunakan konversi huruf (string manipulation) yang disesuaikan dengan jam(0-23) dibuatnya file tersebut dengan program terpisah dengan (misal: password.txt dibuat pada jam 01.28 maka namanya berubah menjadi qbttxpse.txt dengan perintah ‘bash soal2_enkripsi.sh password.txt’. Karena p adalah huruf ke 16 dan file dibuat pada jam 1 maka 16+1=17 dan huruf ke 17 adalah q dan begitu pula seterusnya. Apabila melebihi z, akan kembali ke a, contoh: huruf w dengan jam 5.28, maka akan menjadi huruf b.
+
+   (D) jangan lupa untuk membuat dekripsinya supaya nama file bisa kembali.
+   
 > (A) membuat sebuah script bash yang dapat menghasilkan password secara acak sebanyak 28 karakter yang terdapat huruf besar, huruf kecil, dan angka. 
    (B) Password acak tersebut disimpan pada file berekstensi .txt dengan nama berdasarkan argumen yang diinputkan dan HANYA                                berupa alphabet.
    
@@ -100,7 +104,15 @@ sedikit ?
 
         fi
 
-        done                      
+        done   
+        
+*  if [[ $var =~ ^[a-zA-Z]+$ ]]; = Cek var harus alphabet
+*  randompswrd=$(cat /dev/urandom|tr -dc A-Za-z0-9 | head -c 28) = generate random pasword
+*   if [[ "$randompswrd" =~ [A-Z] ]] && [[ "$randompswrd" =~ [a-z] ]] && [[ "$randompswrd" =~ [0-9] ]] = Ngecek apakah ada huruf besar , kecil, dan angka
+*    echo "$randompswrd"  > "$var".txt = memasukkan random password pada file txt
+
+> 
+
    
    
    
