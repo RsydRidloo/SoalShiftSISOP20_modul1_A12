@@ -106,8 +106,37 @@ sedikit ?
    
 
 3. Pada soal ini kita diminta untuk :
-   (a) membuat script untuk mendownload 28 gambar dari "https://loremflickr.com/320/240/cat" menggunakan command wget dan menyimpan file dengan nama "pdkt_kusuma_NO" kemudian menyimpan log message wget kedalam sebuah file "wget.log"
-   (b) membuat penjadwalan untuk menjalankan script download tersebut, dimana script download tersebut hanya berjalan setiap 8 jam dimulai dari jam 6.05 setiap hari kecuali hari sabtu. 
-   (c) mengecek apakah gambar yang didownload identik atau tidak. Jika identik, sisakan 1 gambar, dan sisanya dipindahkan ke dalam folder ./duplicate dengan format filename "duplicate_nomor", kemudian semua gambar yang tersisa dipindahkan ke dalam folder ./kenangan dengan format filename "kenangan_nomor". Lalu setelah current directory kosong, seluruh log di backup menjadi ekstensi log.bak
+   (A) membuat script untuk mendownload 28 gambar dari "https://loremflickr.com/320/240/cat" menggunakan command wget dan menyimpan file dengan nama "pdkt_kusuma_NO" kemudian menyimpan log message wget kedalam sebuah file "wget.log"
+   
+   (B) membuat penjadwalan untuk menjalankan script download tersebut, dimana script download tersebut hanya berjalan setiap 8 jam dimulai dari jam 6.05 setiap hari kecuali hari sabtu. 
+   
+   (C) mengecek apakah gambar yang didownload identik atau tidak. Jika identik, sisakan 1 gambar, dan sisanya dipindahkan ke dalam folder ./duplicate dengan format filename "duplicate_nomor", kemudian semua gambar yang tersisa dipindahkan ke dalam folder ./kenangan dengan format filename "kenangan_nomor". Lalu setelah current directory kosong, seluruh log di backup menjadi ekstensi log.bak
+   
+> (A) membuat script untuk mendownload 28 gambar dari "https://loremflickr.com/320/240/cat" menggunakan command wget dan menyimpan file dengan nama "pdkt_kusuma_NO" kemudian menyimpan log message wget kedalam sebuah file "wget.log"
+
+      #!/bin/bash
+
+      count=1
+
+      while read p; do
+      for ((i=1; i<=28; i=i+1))
+      do
+
+        wget -O "pdkt_kusuma_${count}.jpg" $p -a wget.log
+                count=$((count+1))
+
+      done
+      done <list.txt
+      
+dengan isi list.txt :
+
+       wget https://loremflickr.com/320/240/cat
+
+* count=1 merupakan inisialisasi variabel count yang nantinya akan digunakan sebagai penomoran pada nama file yang di download(sebenarnya bisa menggunakan variabel i)
+* while read p digunakan untuk membaca file p yang dimasukkan di akhir yakni list.txt
+* -O "pdkt_kusuma_${count}.jpg" merupakan perintah yang digunakan untuk menamai file yang di download
+* $p digunakan untuk mengakses file list.txt yang berisi link download dan perintah wget untuk mendownload file
+* -a wget.log digunakan untuk menyimpan log messages wget ke dalam sebuah file yang bernama wget.log
+ 
 
  
