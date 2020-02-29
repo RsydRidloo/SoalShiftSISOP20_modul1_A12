@@ -19,11 +19,11 @@ laporan tersebut.
 > A. Tentukan wilayah bagian (region) mana yang memiliki keuntungan (profit) paling
 sedikit ?
 
-    echo "A. Region dengan Profit Sedikit:" 
+    ```echo "A. Region dengan Profit Sedikit:" 
     awk -F '        '   '{arr[$13]+=$21} 
     END {
         for (hasil in arr) {print hasil}
-    }' Sample-Superstore.tsv | sort -g | head -1
+    }' Sample-Superstore.tsv | sort -g | head -1```
     
 * {arr[$13]+=$21} = Menambahkan profit pada setiap region yang sama 
 *  for (hasil in arr) = kemudian mengecek region yang memiliki profit terkecil dan masuk pada hasil
