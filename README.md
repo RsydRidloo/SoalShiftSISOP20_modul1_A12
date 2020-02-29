@@ -19,11 +19,7 @@ laporan tersebut.
 > A. Tentukan wilayah bagian (region) mana yang memiliki keuntungan (profit) paling
 sedikit ?
 
-    ```echo "A. Region dengan Profit Sedikit:" 
-    awk -F '        '   '{arr[$13]+=$21} 
-    END {
-        for (hasil in arr) {print hasil}
-    }' Sample-Superstore.tsv | sort -g | head -1```
+    echo "A. Region dengan Profit Sedikit:" region=$(awk -F '\t'  '{arr[$13]+=$21} END { for (hasil in arr) {print hasil} }' Sample-Superstore.tsv | sort -g | head -1) echo "$region"
     
 * {arr[$13]+=$21} = Menambahkan profit pada setiap region yang sama 
 *  for (hasil in arr) = kemudian mengecek region yang memiliki profit terkecil dan masuk pada hasil
@@ -35,11 +31,7 @@ sedikit ?
 >  B. Tampilkan 2 negara bagian (state) yang memiliki keuntungan (profit) paling
       sedikit berdasarkan hasil poin a
       
-    echo "B. 2 Negara dengan Profit Sedikit:"
-    awk -F '        '  '$13 ~/Central/ {arr[$11]+=$21}
-    END {
-    for(hasil in arr) {print arr[hasil]"  "hasil}
-    }' Sample-Superstore.tsv | sort -g | head -2
+      echo " " echo "B. 2 Negara dengan Profit Sedikit:" state=$(awk -F '\t' -v a=$region '{if($13==a)arr[$11]+=$21} END { for(hasil in arr) {print arr[hasil]"  "hasil} }' Sample-Superstore.tsv | sort -g | head -2) echo "$state"
     
 *  $13 ~/Central/ = Karena diketahui hasil point a adalah central 
 * {arr[$11]+=$21} = Menambahkan profit pada setiap state yang sama  
@@ -52,13 +44,7 @@ sedikit ?
 > C. Tampilkan 10 produk (product name) yang memiliki keuntungan (profit) paling
       sedikit berdasarkan 2 negara bagian (state) hasil poin b
       
-    echo "C. 10 Produk yang memiliki Profit paling sedikit berdasarkan 2 negara: "
-    awk -F '        '  '$13 ~/Central/{
-    if ($11 == "Texas" || $11 == "Illinois") arr[$17]+=$21
-    }
-    END {
-    for(hasil in arr) {print arr[hasil]" "hasil}
-    }' Sample-Superstore.tsv | sort -g | head -10
+    echo " " echo "C. 10 Produk yang memiliki Profit paling sedikit berdasarkan 2 negara: " awk -F '\t' -v a=$region '{if($11 == "Texas" || $11 == "Illinois")arr[$17]+=$21 } END { for(hasil in arr) {print arr[hasil]" "hasil} }' Sample-Superstore.tsv | sort -g | head -10
  
 *  if ($11 == "Texas" || $11 == "Illinois") arr[$17]+=$21 = Menambahkan profit pada setiap produk sama yang terdapat pada state "Texas" dan "Illinois"   
 *  for(hasil in arr) 
@@ -111,9 +97,42 @@ sedikit ?
 *   if [[ "$randompswrd" =~ [A-Z] ]] && [[ "$randompswrd" =~ [a-z] ]] && [[ "$randompswrd" =~ [0-9] ]] = Ngecek apakah ada huruf besar , kecil, dan angka
 *    echo "$randompswrd"  > "$var".txt = memasukkan random password pada file txt
 
-> 
+>  (C) Kemudian supaya file .txt tersebut tidak mudah diketahui maka nama filenya akan di enkripsi dengan menggunakan konversi huruf (string manipulation) yang disesuaikan dengan jam(0-23) dibuatnya file tersebut dengan program terpisah dengan (misal: password.txt dibuat pada jam 01.28 maka namanya berubah menjadi qbttxpse.txt dengan perintah ‘bash soal2_enkripsi.sh password.txt’. Karena p adalah huruf ke 16 dan file dibuat pada jam 1 maka 16+1=17 dan huruf ke 17 adalah q dan begitu pula seterusnya. Apabila melebihi z, akan kembali ke a, contoh: huruf w dengan jam 5.28, maka akan menjadi huruf b.
 
-   
+      nama=$(echo $1 | awk 'BEGIN{FS="."}{printf("%s",$1)}')
+      tgl=$(date -r waktu.txt +"%H")
+      
+      
+      kecil=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+      besar=ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ
+      nama_baru=$(echo "$nama" | tr "${kecil:0:26}" "${kecil:${tgl}:26}" | tr "${besar:0:26}" "${besar:${tgl}:26}")
+
+      mv "$1" "$nama_baru.txt"
+
+      echo "Nama baru adalah $nama_baru.txt"
+      
+*  nama=$(echo $1 | awk 'BEGIN{FS="."}{printf("%s",$1)}') = Mengambil nama input
+*  tgl=$(date -r waktu.txt +"%H") = Mengambil waktu pada file waktu.txt
+*  mv "$1" "$nama_baru.txt" = Memberi nama setelah di enkrip
+
+>   (D) jangan lupa untuk membuat dekripsinya supaya nama file bisa kembali.
+
+      nama=$(echo $1 | awk 'BEGIN{FS="."}{printf("%s",$1)}')
+
+      tgl=$(date -r waktu.txt +"%H")
+
+      diff=$(($tgl*(-1)+26))
+
+      kecil=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+      besar=ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ
+      nama_baru=$(echo "$nama" | tr "${kecil:0:26}" "${kecil:${diff}:26}" | tr "${besar:0:26}" "${besar:${diff}:26}")
+
+      mv "$1" "$nama_baru.txt"
+      
+*  nama=$(echo $1 | awk 'BEGIN{FS="."}{printf("%s",$1)}') = Mengambil nama input
+*  tgl=$(date -r waktu.txt +"%H") =Mengambil waktu pada file waktu.txt
+*  diff=$(($tgl*(-1)+26)) = dekripsi
+*  mv "$1" "$nama_baru.txt" = rename file
    
    
 
