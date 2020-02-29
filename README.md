@@ -65,3 +65,9 @@ sedikit ?
 * {print arr[hasil]" "hasil} = Mengeprint hasil
 *  | sort -g | = Mengurutkan terkecil ke terbesar
 *  head -10 = Mengambil sepuluh baris paling atas
+
+2. Pada soal ini kita harus membuat : 
+   (a) membuat sebuah script bash yang dapat menghasilkan password secara acak sebanyak 28 karakter yang terdapat huruf besar, huruf kecil, dan angka. 
+   (b) Password acak tersebut disimpan pada file berekstensi .txt dengan nama berdasarkan argumen yang diinputkan dan HANYA                                berupa alphabet.
+   
+ 
