@@ -1,3 +1,7 @@
+## Angelita Titiandes Br. Silalahi ( 05111840000088 )
+## Rasyid Ridlo W ( 05111840000135 )
+
+
 # Laporan Penjelasan
 
 1. Whits adalah seorang mahasiswa teknik informatika. Dia mendapatkan tugas praktikum
