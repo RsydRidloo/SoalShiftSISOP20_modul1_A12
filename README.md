@@ -66,10 +66,40 @@ sedikit ?
 *  | sort -g | = Mengurutkan terkecil ke terbesar
 *  head -10 = Mengambil sepuluh baris paling atas
 
-2. Pada soal ini kita harus membuat : 
+2. Pada suatu siang, laptop Randolf dan Afairuzr dibajak oleh seseorang dan kehilangan data-data penting. Untuk mencegah kejadian yang sama terulang kembali mereka meminta bantuan kepada Whits karena dia adalah seorang yang punya banyak ide. Whits memikirkan sebuah ide namun dia meminta bantuan kalian kembali agar ide tersebut cepat diselesaikan.
+
+   (A) membuat sebuah script bash yang dapat menghasilkan password secara acak sebanyak 28 karakter yang terdapat huruf besar, huruf kecil, dan angka. 
    
-   (a) membuat sebuah script bash yang dapat menghasilkan password secara acak sebanyak 28 karakter yang terdapat huruf besar, huruf kecil, dan angka. 
+   (B) Password acak tersebut disimpan pada file berekstensi .txt dengan nama berdasarkan argumen yang diinputkan dan HANYA                                berupa alphabet.
    
-   (b) Password acak tersebut disimpan pada file berekstensi .txt dengan nama berdasarkan argumen yang diinputkan dan HANYA                                berupa alphabet.
+> (A) membuat sebuah script bash yang dapat menghasilkan password secara acak sebanyak 28 karakter yang terdapat huruf besar, huruf kecil, dan angka. 
+   (B) Password acak tersebut disimpan pada file berekstensi .txt dengan nama berdasarkan argumen yang diinputkan dan HANYA                                berupa alphabet.
+   
+      #!/bin/bash
+
+      for var in $@;do
+
+      if [[ $var =~ ^[a-zA-Z]+$ ]];
+      then
+
+      flag=1
+      while [ $flag -eq 1 ]
+      do
+      randompswrd=$(cat /dev/urandom|tr -dc A-Za-z0-9 | head -c 28)
+      if [[ "$randompswrd" =~ [A-Z] ]] && [[ "$randompswrd" =~ [a-z] ]] && [[ "$randompswrd" =~ [0-9] ]]
+      then
+      flag=0
+      fi
+         done
+
+      echo "$randompswrd"  > "$var".txt
+
+      else
+      
+      echo "Salah"
+
+        fi
+
+        done                      
    
  
